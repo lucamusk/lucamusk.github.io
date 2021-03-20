@@ -1,0 +1,104 @@
+@charset "utf-8";
+body {
+	font-style: normal;
+	font-weight: 400;
+	margin: 0;
+	line-height: 1.625;
+	background-color: #000000;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.header-container {
+    background-size: cover;
+    background-position: center center;
+    color: #FFFFFF;
+    padding-bottom: 3vw;
+    text-align: center;
+}
+.header-container .site-header {
+    padding: 20px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    text-transform: uppercase;
+}
+
+.header-container .page-title {
+    padding: 8vw 180px 0 180px;
+}
+.header-container .page-title h2 {
+    font-size: 4.5em;
+    margin-bottom: 0;
+}
+.page-description {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+}
+.page-content {
+    background-color: #fff;
+    margin: -50px auto 0;
+    max-width: 1000px;
+    padding-top: 2em;
+    column-gap: 2em;
+    -webkit-box-shadow: 0 25px 40px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 25px 40px 0 rgba(0, 0, 0, 0.05);
+    padding-bottom: 2em;
+    padding-right: 3em;
+    padding-left: 3em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+}
+.entry-content h2 {
+    font-size: 3em;
+}
+.cta-form form  {
+    max-width: 490px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.cta-form form input {
+    display: inline-block;
+    width: 100%;
+    padding: 18px 24px 14px;
+    min-height: 35px;
+    margin-bottom: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.cta-form form input[type="submit"]  {
+    border: none;
+    background-color: #A86500;
+    text-shadow: 0px 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+.cta-form form input[type="submit"]:hover   {
+    background-color: #333333;
+}
+.site-footer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    font-family: sans-serif;
+}
+
+.social.menu ul li a:hover   {
+    color: #333333;
+}
+@media (max-width:375px){
+    
+    .header-container .page-title {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .header-container .page-title h2 {
+        font-size: 2.5em;
+    }
+}
