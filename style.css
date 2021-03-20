@@ -7,25 +7,29 @@ body {
 	margin-left: 0;
 	margin-bottom: 0;
 	line-height: 1.625;
-	background-color: #000000;
+	background-image: url("images/200606-washington-demonstration-al-1549_e1c57b283c615f899ba66a0168460c8b.jpg");
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-size: cover;
+	background-clip: padding-box;
+	background-attachment: scroll;
+	background-position: 0% 0%;
 }
 .header-container {
-	background-size: cover;
+	background-size: auto auto;
 	background-position: center center;
-	color: #FFFFFF;
+	color: #000000;
 	padding-bottom: 3vw;
 	text-align: center;
 	height: 0;
 	min-height: 0;
-	margin-bottom: 50%;
-	background-image: url("images/200606-washington-demonstration-al-1549_e1c57b283c615f899ba66a0168460c8b.jpg");
+	background-attachment: scroll;
+	margin-bottom: 85px;
 }
 .header-container .site-header {
     padding: 20px 0;
     margin: 0 auto;
     max-width: 1200px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .header-container .page-title {
@@ -43,7 +47,6 @@ body {
 }
 .page-content {
 	background-color: #fff;
-	margin-top: -100%;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 0;
