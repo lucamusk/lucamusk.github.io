@@ -1,5 +1,8 @@
 import time
 
+#input from website
+zip_input = None
+
 keys = ["e06b39e88f79eda8cb7b94ea96ea1655","6cb276dc63f94bada117258366a136ba","9f29f05380690833534c53146e484162","3762f8e9ff7edb97b0045290d7d8dbd4","2c690a86493c2456173822c52d790434"]
 
 def zip_call(zip_code):
@@ -20,3 +23,8 @@ def useful(zip_code):
             "sunset time":str(time.strftime("%D %H:%M", time.localtime(int(api_info["sys"]["sunset"]))))[-4:],"precipitation": str(api_info["weather"][0]["description"])}
 
 
+#Luca, this function call takes zip_input (however you want to get that from the website to the file) from above and an 
+#api key and prints the useful info from the api with that zip code
+#whatever this code prints is sent to calls_from_python.js
+
+print(useful(zip_input))
