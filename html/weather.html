@@ -3,13 +3,98 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
-	<link href="css/weatherstyles.css" rel="stylesheet" type="text/css">
+
+<link href="../css/weatherstyles.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 </head>
 
 <body>
-	<div class="weatherpanel">
-	  <p> wooo it works</p>
-		<p>say thing</p>
+	<div class="weather-panel">
+
+		<div class="mini-panel">
+			<img id="weatherimage" src="../images/Sun.png" class = "temperature-image">
+			<div name="temperaturepanel" class="temperature-panel">
+				<div name="fahrenheit" class="fahrenheit" id="temperature">
+					8°F
+				</div>
+			</div>
+		</div>
     </div>
+	<footer>
+		<div class="item-panel">
+			<div class="item-advisory" id="advisory"> At your current temperature, there is at least a medium risk of frostbite. It is highly recommended that your limit your exposure outdoors, as frostbite can develop in 10 to 30 minutes even with proper protection. That being said, if you do go outside, make sure to travel in pairs or groups to consistently check for signs of frostbite and keep moving to keep your blood flow going.
+			</div>
+			<ul>
+				<li> 
+					<img id="i1i">
+					<div id="i1t"></div>
+				</li>
+				<li> 
+					<img id="i2i">
+					<div id="i2t"></div>
+				</li>
+				<li>
+					<img id="i3i">
+					<div id="i3t"></div>
+				</li>
+			</ul>
+		</div>
+	</footer>
+	<script>
+		var keys = ["e06b39e88f79eda8cb7b94ea96ea1655","6cb276dc63f94bada117258366a136ba","9f29f05380690833534c53146e484162","3762f8e9ff7edb97b0045290d7d8dbd4","2c690a86493c2456173822c52d790434"];
+		var data; 
+		Get(localStorage.getItem("zipcode"));
+		document.getElementById("temperature").innerHTML = data;
+		
+		function fix_time(stamp){
+    let milliseconds = stamp *1000;
+    let dateObject = new Date(milliseconds);
+    let humanDateFormat = dateObject.toLocaleString()
+    return humanDateFormat.slice(-10);
+}
+
+
+function Get(zip_input){
+    var api_key = keys[0];
+    keys.push(keys.shift());
+	jQuery.getJSON("http://api.openweathermap.org/data/2.5/weather?zip=" + String(zip_input) + "&appid=" + String(api_key) + "&units=imperial", useful
+	)
+}
+
+function useful(data){
+	console.log("hi");
+    let api_info = data["main"]["feels_like"];
+	console.log(api_info);
+	data = api_info;
+	document.getElementById("temperature").innerHTML = data + "°F";
+	if(data < 32){
+		document.getElementById("i2i").src = "../images/handwarmers";
+		document.getElementById("advisory").innerHTML = "Although there is a low risk of frostbite above 0°F, prolonged exposure to your current temperature without appropriate dressing can cause hypothermia. Try to warm up frequently (by entering a store or drinking a hot beverage) and bring multiple extra layers of clothing.";
+		document.getElementById("weatherimage").src = "../images/Cold.png";
+	}
+	if(data >= 32 && data < 60){
+		document.getElementById("advisory").innerHTML = "Be prepared for temperature fluctuations by wearing and bringing layers, so you can shed a layer if you start to heat up and add one if you get cold. Make sure to have at least a light jacket and a sweater/sweatshirt to start with and an extra layer in a bag or wrapped around your waist. Also, take a hat and gloves with you in case the temperature drops later in the day. Lastly, ensure that if you remove a layer, you are still fully covered (with long pants/leggings and long sleeves) to protect you from the elements and any possible tripping or falling.";
+		document.getElementById("i2i").src = "../images/lightjacket";
+		
+	}
+	if(data >60){
+		document.getElementById("advisory").innerHTML = "Temperatures may fluctuate at the lower end of this scale, so bring a light layer in case it gets colder. At your current temperature, the biggest danger in terms of weather is heat exhaustion and dehydration. Wearing masks and a lack of bathrooms can cause people to not drink enough water during protests. To combat this, drink water before you go and bring water with you. It is important to know the symptoms of dehydration and heat exhaustion which include thirst, a lack of urination, dizziness, increased breathing, heavy sweating, and a rapid pulse. If you notice any of these symptoms, stop all activity, find a cooler area, and rehydrate. If symptoms worsen or don’t improve within an hour, seek medical help. In addition, even though it is warm, it is still important to wear long pants/leggings and long sleeves to protect you from the elements and any possible tripping or falling.";
+		document.getElementById("i2i").src = "../images/waterbottle";
+		document.getElementById("weatherimage").src = "../images/Hot.png";
+	}
+	
+	
+//    let min = api_info["main"]["temp_min"];
+//    let max = api_info["main"]["temp_max"];
+//    let offset = api_info["main"]["temp"] - api_info["main"]["feels_like"];
+//    let effective_min = String(min-offset)
+//    let effective_max = String(max-offset)
+//    return [[["temp",String(api_info["main"]["temp"]) + "\u00B0" + "F"],["feels like", String(api_info["main"]["feels_like"]),
+//    ["effective range", effective_min + "\u00B0" + "F to " + effective_max + + "\u00B0" + "F"], ["humidity",String(api_info["main"]["humidity"]) + "%"], 
+//    ["windspeed",String(api_info["main"]["windspeed"]) + "mph"],["precipitation",String(api_info["weather"][0]["description"])],
+//    ["sunrise",fix_time(api_info["sys"]["sunrise"])],["sunset",fix_time(api_info["sys"]["sunset"])]]]]
+
+}
+	</script>
 </body>
 </html>
